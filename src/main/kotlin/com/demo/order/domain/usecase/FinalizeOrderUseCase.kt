@@ -9,21 +9,21 @@ import com.demo.order.domain.model.Card
 import com.demo.order.domain.model.Customer
 import com.demo.order.domain.model.Order
 import com.demo.order.domain.model.Product
-import com.demo.order.domain.port.ICreditCardRepository
-import com.demo.order.domain.port.ICustomerRepository
-import com.demo.order.domain.port.IOrderRepository
+import com.demo.order.domain.port.CreditCardDataAccessPort
+import com.demo.order.domain.port.CustomerDataAccessPort
+import com.demo.order.domain.port.OrderDataAccessPort
 import com.demo.order.infra.integration.IPaymentIntegration
-import com.demo.order.domain.port.IProductRepository
+import com.demo.order.domain.port.ProductDataAccessPort
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 class FinalizeOrderUseCase {
 
-    @Autowired private lateinit var customerRepository: ICustomerRepository
-    @Autowired private lateinit var productRepository: IProductRepository
-    @Autowired private lateinit var creditCardRepository: ICreditCardRepository
-    @Autowired private lateinit var orderRepository: IOrderRepository
+    @Autowired private lateinit var customerRepository: CustomerDataAccessPort
+    @Autowired private lateinit var productRepository: ProductDataAccessPort
+    @Autowired private lateinit var creditCardRepository: CreditCardDataAccessPort
+    @Autowired private lateinit var orderRepository: OrderDataAccessPort
     @Autowired private lateinit var paymentIntegration: IPaymentIntegration
 
     fun finalize(customerCpf: String, productCodes: List<String>): Order {
