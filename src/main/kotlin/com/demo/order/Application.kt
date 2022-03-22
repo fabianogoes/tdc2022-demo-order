@@ -1,4 +1,4 @@
-package com.demo.pedido
+package com.demo.order
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

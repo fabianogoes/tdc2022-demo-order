@@ -1,6 +1,7 @@
-package com.demo.pedido
+package com.demo.order.domain.model
 
 import java.time.YearMonth
+import java.util.UUID
 
 data class Customer(
     val cpf: String,
@@ -10,7 +11,8 @@ data class Customer(
 
 data class Product(
     val code: String,
-    val name: String
+    val name: String,
+    val value: Long
 )
 
 data class Card(
@@ -27,7 +29,17 @@ data class Card(
 }
 
 data class Order(
+    val id: UUID? = UUID.randomUUID(),
     val customer: Customer,
     val products: List<Product>,
-    val card: Card
-)
+    val payment: Card,
+    var state: OrderState,
+) {
+    fun completed() = apply { state = OrderState.COMPLETED }
+    fun total() = products.sumOf { it.value }
+
+    enum class OrderState {
+        CREATED,
+        COMPLETED
+    }
+}
