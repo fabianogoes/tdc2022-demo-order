@@ -12,11 +12,8 @@ class CreditCardH2Adapter(
     private val repository: CreditCardRepository
 ) : CreditCardDataAccessPort {
     override fun findCardByCustomer(customer: Customer): Card? =
-        repository
-            .findByCustomerCpf(customer.cpf)
-            .first { it.main }
+        repository.findByCustomerCpf(customer.cpf).first { it.main }
             .toModel()
 
-    override fun save(card: Card): Card =
-        repository.save(card.toDBO()).toModel()
+    override fun save(card: Card): Card = repository.save(card.toDBO()).toModel()
 }

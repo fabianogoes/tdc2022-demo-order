@@ -13,6 +13,5 @@ class ProductH2DataAccessPort(
     override fun findByCodes(products: List<String>): List<Product>? =
         repository.findAll().map { it.toModel() }
 
-    override fun save(product: Product): Product =
-        repository.save(product.toDBO()).toModel()
+    override fun save(product: Product): Product = repository.save(product.toDBO()).toModel()
 }

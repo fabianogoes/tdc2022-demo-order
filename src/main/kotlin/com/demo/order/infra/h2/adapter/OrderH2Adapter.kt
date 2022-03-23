@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository
 class OrderH2Adapter(
     private val repository: OrderRepository
 ) : OrderDataAccessPort {
-    override fun save(order: Order): Order =
-        repository.save(order.toDBO()).toModel()
+    override fun save(order: Order): Order = repository.save(order.toDBO()).toModel()
 }
