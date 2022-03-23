@@ -1,11 +1,6 @@
-package com.demo.order.infra.repository.memory
+package com.demo.order.infra.inmemory.repository
 
 import com.demo.order.domain.model.Card
-import com.demo.order.domain.model.Customer
-import com.demo.order.domain.port.ICreditCardRepository
-import com.demo.order.domain.port.ICustomerRepository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Repository
 import java.time.YearMonth
 
 const val MASTERCARD_NAME = "Zack Wyman"
@@ -36,14 +31,3 @@ val CARDS = listOf(
     VISA_CARD
 )
 
-@Repository
-class CreditCardMemoryRepository : ICreditCardRepository {
-
-    @Autowired private lateinit var customerRepository: ICustomerRepository
-
-    override fun findCardByCustomer(customer: Customer): Card? =
-        customerRepository
-            .findByCpf(customer.cpf)?.cards
-            ?.first { it.main }
-
-}
