@@ -1,4 +1,4 @@
-package com.demo.pedido
+package com.demo.order
 
 import org.springframework.stereotype.Repository
 import java.time.YearMonth

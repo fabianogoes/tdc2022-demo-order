@@ -1,4 +1,4 @@
-package com.demo.pedido
+package com.demo.order
 
 import java.time.YearMonth
 
